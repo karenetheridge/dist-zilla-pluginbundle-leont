@@ -75,6 +75,8 @@ sub configure {
 	$self->add_plugins(@{$tool});
 	$self->add_plugins(@plugins_late);
 	$self->add_bundle("\@$_") for @bundles;
+	
+	$self->add_plusin([ 'Prereqs' => { '-phase' => 'develop', '-relationship' => 'requires', 'Dist::Zilla::Plugin::' . $tool, '0' } ]);
 	return;
 }
 
